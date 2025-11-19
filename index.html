@@ -114,7 +114,7 @@
             justify-content: center;
         }
 
-        .profile-picture {
+        .profile-photo {
             width: 200px;
             height: 200px;
             border-radius: 50%;
@@ -124,7 +124,7 @@
             transition: transform 0.4s ease;
         }
 
-        .profile-picture:hover {
+        .profile-photo:hover {
             transform: scale(1.05);
         }
 
@@ -164,6 +164,38 @@
             background: rgba(237, 161, 173, 0.1);
             border-radius: 10px;
             display: inline-block;
+        }
+
+        /* Video Section Styles */
+        .video-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background: white;
+            padding: 20px;
+        }
+
+        .video-player {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .video-caption {
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
+            padding: 10px;
+            background: rgba(237, 161, 173, 0.1);
+            border-radius: 10px;
         }
 
         /* About Me Page */
@@ -779,7 +811,7 @@
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-18px) rotate(2deg); }
         }
-        
+
         /* Animation Classes */
         .p1 { transform: rotate(-5deg); }
         .p2 { transform: rotate(3deg); }
@@ -794,7 +826,7 @@
         .float-1 { animation: float1 6s ease-in-out infinite; }
         .float-2 { animation: float2 7s ease-in-out infinite 1s; }
         .float-3 { animation: float3 5s ease-in-out infinite 0.5s; }
-        
+
         .floating-box:nth-child(odd) { animation: float 6s ease-in-out infinite; }
         .floating-box:nth-child(even) { animation: float 7s ease-in-out infinite 1s; }
 
@@ -843,7 +875,7 @@
                 margin: 20px 0;
             }
             
-            .profile-picture {
+            .profile-photo {
                 width: 150px;
                 height: 150px;
             }
@@ -857,6 +889,11 @@
             .highlight {
                 font-size: 1em;
                 padding: 12px;
+            }
+            
+            /* Video Section */
+            .video-container {
+                padding: 15px;
             }
             
             /* About Me Page */
@@ -949,7 +986,7 @@
             
             .music-player-title {
                 font-size: 1.4em;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             
             /* Experience Page */
@@ -1080,7 +1117,7 @@
                 <div class="quick-info">
                     <h3>About Me</h3>
                     <p><strong>Name:</strong> Nurul Ain Hasanah Binti Azhar</p>
-                    <p><strong>Birth place:</strong> Hospital Yan, Kedah</p>
+                    <p><strong>From:</strong> Yan, Kedah</p>
                     <p><strong>Personality type:</strong> Introvert, Independent and Loves animals</p>
                     <p><strong>Passion:</strong> Reading, Learning, and Creating</p>
                 </div>
@@ -1091,6 +1128,19 @@
             <p>Hi, Assalamualaikum! I'm Ain, a student at Universiti Teknologi MARA (UiTM) pursuing a Diploma in Information Management. This website represents my journey as a student, showcasing my projects, reflections, and achievements along the way.</p>
 
             <p class="highlight">"Change is the end result of all true learning."&#9748;</p>
+
+            <!-- Video Introduction Section -->
+            <div class="video-section">
+                <h2 class="section-title">My Video Introduction</h2>
+                <div class="video-container">
+                    <video class="video-player" controls poster="video-thumbnail.jpg">
+                        <source src="ain-introduction.mp4" type="video/mp4">
+                        <source src="ain-introduction.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">A brief introduction about myself, my interests, and my journey as a student.</p>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -1185,6 +1235,19 @@
                 </div>
             </div>
 
+            <!-- Single Video Section -->
+            <div class="video-section">
+                <h2 class="section-title">My Journey in Video</h2>
+                <div class="video-container">
+                    <video class="video-player" controls poster="journey-thumbnail.jpg">
+                        <source src="my-journey.mp4" type="video/mp4">
+                        <source src="my-journey.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">A visual story of my personal and academic journey so far.</p>
+                </div>
+            </div>
+
             <!-- Floating Images Section -->
             <div class="floating-images-section">
                 <h2 class="section-title">My Journey in Pictures</h2>
@@ -1204,24 +1267,28 @@
                              alt="Education Visit" class="floating-img float-3">
                         <div class="img-caption">Education Visit</div>
                     </div>
-                    <div>
-                         <div class="floating-img-container">
-                        <img src="pic8.jpg" 
-                         alt="MUET Test" class="floating-img float-4">
-                        <div class="MUET Test</div>
                 </div>
-              </div>
             </div>
         </div>
     </div>
-</div>
-                        
 
     <!-- Education Page -->
     <div id="education" class="page">
         <section>
             <h2>Educational Background</h2>
             <p class="highlight">Here's a glimpse into my academic milestones and learning experiences 📚</p>
+
+            <!-- Video Presentation -->
+            <div class="video-section">
+                <div class="video-container">
+                    <video class="video-player" controls poster="education-thumbnail.jpg">
+                        <source src="education-journey.mp4" type="video/mp4">
+                        <source src="education-journey.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">My educational journey from primary school to university.</p>
+                </div>
+            </div>
 
             <!-- 🎓 Timeline Section -->
             <div class="timeline">
@@ -1276,6 +1343,19 @@
         <section>
             <div class="intro">
                 <p>In my free time, I enjoy activities that help me relax, grow, and express myself creatively.</p>
+            </div>
+
+            <!-- Video Hobbies Section -->
+            <div class="video-section">
+                <h2 class="section-title">My Hobbies in Action</h2>
+                <div class="video-container">
+                    <video class="video-player" controls poster="hobbies-thumbnail.jpg">
+                        <source src="my-hobbies.mp4" type="video/mp4">
+                        <source src="my-hobbies.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">A compilation of my favorite hobbies and creative activities.</p>
+                </div>
             </div>
 
             <!-- POLAROID GALLERY -->
@@ -1378,6 +1458,19 @@
                 <p>My practical training was an exciting opportunity to apply what I've learned at UiTM into a real working environment. It gave me the confidence, experience, and understanding of how records are managed in actual organizations.</p>
             </div>
 
+            <!-- Internship Video -->
+            <div class="video-section">
+                <h2 class="section-title">Internship Experience</h2>
+                <div class="video-container">
+                    <video class="video-player" controls poster="internship-thumbnail.jpg">
+                        <source src="internship-experience.mp4" type="video/mp4">
+                        <source src="internship-experience.webm" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="video-caption">A day in my life during my internship at Pejabat Tanah Dan Daerah Yan.</p>
+                </div>
+            </div>
+
             <div class="experience-box">
                 <h3>📍 Pejabat Tanah Dan Daerah Yan</h3>
                 <p><strong>Duration:</strong> 27 July – 18 September 2025</p>
@@ -1424,8 +1517,8 @@
                 <h3>📧 Contact Information</h3>
                 <p><strong>Email:</strong> ainhasanah212@gmail.com</p>
                 <p><strong>Phone:</strong> +60 19-9144 382</p>
-                <p><strong>Current Location:</strong> Kolej Murni, Universiti Teknologi MARA</p>
-                <p><strong>Home Location:</strong> Belakang Sekolah Menegah Agama Fauzi, 06900 Yan, Kedah.</p>
+                <p><strong>Current Location:</strong> Kolej Murni 2 , Universiti Teknologi MARA</p>
+                <p><strong>Home Location:</strong>Lot 13, Belakang Sekolah Menegah Agama Fauzi, 06900 Yan, Kedah.</p>
 
                 <div class="social-icons">
                     <a href="mailto:ainhasanah212@gmail.com" title="Email">
@@ -1439,9 +1532,6 @@
                     </a>
                     <a href="https://www.linkedin.com/in/ain-azhar-8377aa363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn">
                         <i class="fab fa-linkedin"></i>
-                    </a>
-                        <a href="https://www.tiktok.com/@ain_azhar21?_r=1&_t=ZS-91X2pvDdlP5" title="TikTok">
-                        <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
             </div>
@@ -1655,10 +1745,17 @@
         document.querySelector('a[href="https://wa.me/60199144382"]').addEventListener('click', function(e) {
             console.log('WhatsApp link clicked');
         });
+
+        // Video player enhancements
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('play', function() {
+                console.log('Video started playing:', this.src);
+            });
+            
+            video.addEventListener('ended', function() {
+                console.log('Video ended:', this.src);
+            });
+        });
     </script>
 </body>
-</html>
-
-
-
-
+</html> letak link ni dalam bentuk potrait ke dalam coing kat atas : https://vt.tiktok.com/ZSfNQ643W/
