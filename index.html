@@ -561,23 +561,53 @@
             padding-left: 20px;
         }
 
-        .photo-box {
-            margin-top: 40px;
+        /* Photo Gallery Styles */
+        .photo-gallery-section {
+            margin: 60px 0;
             text-align: center;
-            animation: fadeIn 2s ease-in-out;
         }
 
-        .photo-box img {
-            width: 80%;
-            max-width: 500px;
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-            transition: transform 0.3s;
-            border: 3px solid var(--primary-pink);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            background: white;
         }
 
-        .photo-box img:hover {
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 15px;
+            background: white;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.4;
+            text-align: center;
+            border-top: 1px solid rgba(237, 161, 173, 0.3);
         }
 
         .reflection {
@@ -958,8 +988,14 @@
                 margin-top: 30px;
             }
             
-            .photo-box img {
-                width: 95%;
+            /* Photo Gallery */
+            .photo-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-item img {
+                height: 220px;
             }
             
             /* Contact Page */
@@ -1011,6 +1047,16 @@
             table {
                 width: 95%;
             }
+            
+            /* Photo Gallery */
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery-item img {
+                height: 200px;
+            }
         }
 
         @media (min-width: 1200px) {
@@ -1026,7 +1072,7 @@
             .music-player-container:hover,
             .spotify-player:hover,
             .profile-photo:hover,
-            .photo-box img:hover,
+            .gallery-item:hover,
             .floating-img:hover,
             .social-icons a:hover,
             .contact-form button:hover {
@@ -1045,7 +1091,7 @@
             .about-photo img,
             .floating-img,
             .polaroid img,
-            .photo-box img {
+            .gallery-item img {
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
             }
@@ -1080,7 +1126,7 @@
                 <div class="quick-info">
                     <h3>About Me</h3>
                     <p><strong>Name:</strong> Nurul Ain Hasanah Binti Azhar</p>
-                    <p><strong>From:</strong> Yan, Kedah</p>
+                    <p><strong>Birth place:</strong> Hospital Yan, Kedah</p>
                     <p><strong>Education:</strong> Diploma in Information Management, UiTM</p>
                     <p><strong>Passion:</strong> Reading, Learning, and Creating</p>
                 </div>
@@ -1141,8 +1187,8 @@
                     <h3 class="box-title">Hobbies & Interests</h3>
                     <div class="box-content">
                         <p><strong>Reading:</strong> Fiction, Self-help, Horror</p>
-                        <p><strong>Creative Writing:</strong> Short stories </p>
-                        <p><strong>Photography:</strong> Nature and videography</p>
+                        <p><strong>Creative Writing:</strong> Short stories and Qoutes </p>
+                        <p><strong>Photography:</strong> Nature and Potrait photos </p>
                         <p><strong>Learning:</strong> Always exploring new topics that feels interesting to me</p>
                     </div>
                 </div>
@@ -1154,8 +1200,8 @@
                     <h3 class="box-title">Practical Experience</h3>
                     <div class="box-content">
                         <p><strong>Library Assistant:</strong> Pejabat Tanah Dan Daerah Yan (2025)</p>
-                        <p><strong>Position:</strong> Clerk</p>
-                        <p><strong>Experience:</strong> Open Outside Booth in Guar</p>
+                        <p><strong>Department:</strong> Unit Rekod</p>
+                        <p><strong>Experience:</strong> Exploring the website of i-Hasil and the plan of certan state.</p>
                         <p><strong>Duration of internship:</strong> 8 weeks</p>
                     </div>
                 </div>
@@ -1166,7 +1212,7 @@
                     </div>
                     <h3 class="box-title">Skills</h3>
                     <div class="box-content">
-                        <p><strong>Technical:</strong>Microsoft Office, Cataloging</p>
+                        <p><strong>Technical:</strong>Microsoft Office, Cataloging and Editing</p>
                         <p><strong>Soft Skills:</strong> Communication, Problem-solving, Teamwork</p>
                         <p><strong>Languages:</strong> Malay, English</p>
                         <p><strong>Research:</strong> Information retrieval and analysis</p>
@@ -1373,8 +1419,8 @@
             <div class="experience-box">
                 <h3>📍 Pejabat Tanah Dan Daerah Yan</h3>
                 <p><strong>Duration:</strong> 27 July – 18 September 2025</p>
-                <p><strong>Position:</strong> Clerk</p>
-                <p><strong>Responsibilities :</strong></p>
+                <p><strong>Department:</strong> Unit Rekod </p>
+                <p><strong>Responsibilities:</strong></p>
                 <ul>
                     <li>Assisted in using the i-Hasil system to check land tax and enter data into Microsoft Excel.</li>
                     <li>Performed verification, recording, and updating of land title numbers using the SPTB Web system.</li>
@@ -1393,10 +1439,35 @@
                 </ul>
             </div>
 
-            <div class="photo-box">
-                <img src="pic7.jpeg">	
-                <p><i>Pejabat Tanah dan Daerah Yan.</i></p>
-                <p>the place where I completed my internship</p>
+            <!-- Photo Gallery Section -->
+            <div class="photo-gallery-section">
+                <h2 class="section-title">Internship Experience Gallery</h2>
+                <div class="photo-gallery">
+                    <div class="gallery-item">
+                        <img src="pic7.jpeg" alt="Pejabat Tanah dan Daerah Yan">
+                        <div class="gallery-caption">Pejabat Tanah dan Daerah Yan - My internship workplace</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="picture3.jpg" alt="Office Environment">
+                        <div class="gallery-caption">Office environment where I worked</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic4.jpg" alt="Team Collaboration">
+                        <div class="gallery-caption">Site visit at Sedaka</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic9.jpg" alt="Document Management">
+                        <div class="gallery-caption">Site visit at Sg. Limau</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="pic4.jpg" alt="System Training">
+                        <div class="gallery-caption"> Plan maps</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="picture2.jpg" alt="Internship Completion">
+                        <div class="gallery-caption">Open booth in Guar Chempedak</div>
+                    </div>
+                </div>
             </div>
 
             <div class="reflection">
@@ -1416,8 +1487,8 @@
                 <h3>📧 Contact Information</h3>
                 <p><strong>Email:</strong> ainhasanah212@gmail.com</p>
                 <p><strong>Phone:</strong> +60 19-9144 382</p>
-                <p><strong>Current Location:</strong> Kolej Murni 2 , Universiti Teknologi MARA</p>
-                <p><strong>Home Location:</strong>Lot 13, Belakang Sekolah Menegah Agama Fauzi, 06900 Yan, Kedah.</p>
+                <p><strong>Current Location:</strong> Kolej Murni, Universiti Teknologi MARA</p>
+                <p><strong>Home Location:</strong> Belakang Sekolah Menegah Agama Fauzi, 06900 Yan, Kedah.</p>
 
                 <div class="social-icons">
                     <a href="mailto:ainhasanah212@gmail.com" title="Email">
