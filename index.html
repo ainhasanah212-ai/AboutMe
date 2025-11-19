@@ -168,7 +168,7 @@
 
         /* About Me Page */
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -1169,6 +1169,44 @@
     </style>
 </head>
 <body>
+    <script>
+    // Simple page navigation - fix
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set initial active page
+        showPage('home');
+        
+        // Add click events to navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                showPage(targetPage);
+            });
+        });
+        
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Update URL hash
+            window.location.hash = pageId;
+        }
+        
+        // Load page from URL hash if present
+        if (window.location.hash) {
+            const pageFromHash = window.location.hash.replace('#', '');
+            showPage(pageFromHash);
+        }
+    });
+</script>
     <!-- Header -->
     <header>
         <h1><i id="header-title">The Learning Lane Of AIN</i></h1>
@@ -1805,6 +1843,7 @@
     </script>
 </body>
 </html>
+
 
 
 
