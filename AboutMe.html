@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ain Hasanah - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-pink: #eda1ad;
+            --secondary-pink: #f8b6c0;
+            --dark-pink: #d63384;
+            --light-pink: #ffe4e9;
+            --background: linear-gradient(135deg, #fff6fa 0%, #ffe9ef 100%);
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: var(--background);
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><path d="M30,30 Q50,10 70,30 T90,50 T70,70 T50,90 T30,70 T10,50 T30,30 Z" fill="white"/></svg>');
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        header p {
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.2em;
+            position: relative;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--light-pink);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            color: var(--dark-pink);
+            background-color: rgba(255,255,255,0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .page {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page */
+        .profile-section {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-pink);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .quick-info {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: left;
+            max-width: 500px;
+            border-left: 5px solid var(--primary-pink);
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .quick-info h3 {
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .quick-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .quick-info strong {
+            color: var(--dark-pink);
+        }
+
+        .highlight {
+            font-style: italic;
+            color: var(--dark-pink);
+            margin-top: 20px;
+            font-size: 1.2em;
+            padding: 15px;
+            background: rgba(237, 161, 173, 0.1);
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        /* About Me Page */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Gambar bulat untuk halaman About Me */
+        .about-photo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .about-photo img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-pink);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .floating-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .floating-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(237, 161, 173, 0.2);
+        }
+
+        .floating-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+        }
+
+        .floating-box:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .box-icon {
+            font-size: 2.5em;
+            color: var(--primary-pink);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .box-title {
+            color: var(--dark-pink);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .box-content {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .box-content p {
+            margin-bottom: 15px;
+        }
+
+        .box-content strong {
+            color: var(--dark-pink);
+        }
+
+        .quote {
+            font-style: italic;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .quote i {
+            color: var(--primary-pink);
+            font-size: 1.2em;
+        }
+
+        /* Floating Images */
+        .floating-images-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--dark-pink);
+            font-size: 2em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .floating-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .floating-img-container {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .floating-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+            border: 3px solid var(--primary-pink);
+            cursor: pointer;
+        }
+
+        .floating-img:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .img-caption {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(237, 161, 173, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .floating-img-container:hover .img-caption {
+            opacity: 1;
+            bottom: -35px;
+        }
+
+        /* Education Page */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+            padding-left: 30px;
+            border-left: 3px solid var(--dark-pink);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .timeline-item::before {
+            content: "🎓";
+            position: absolute;
+            left: -25px;
+            top: 0;
+            font-size: 1.5em;
+            color: var(--dark-pink);
+            background: #fff6fa;
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            margin: 0;
+            color: var(--dark-pink);
+            font-size: 1.3em;
+        }
+
+        .timeline-item p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        table {
+            margin: 40px auto;
+            border-collapse: collapse;
+            width: 80%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid var(--dark-pink);
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: var(--light-pink);
+            color: var(--dark-pink);
+        }
+
+        tr:hover {
+            background-color: #fff0f4;
+            transition: 0.3s;
+        }
+
+        /* Hobbies Page */
+        .intro {
+            background-color: var(--light-pink);
+            padding: 25px;
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        .polaroid-grid {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px;
+            width: 230px;
+            border-radius: 5px;
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+            position: relative;
+            transition: transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .polaroid::before {
+            content: "";
+            width: 70px;
+            height: 18px;
+            background: #e8906f;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            border-radius: 3px;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .polaroid h3 {
+            margin-top: 10px;
+            color: var(--dark-pink);
+        }
+
+        .polaroid p {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* Music Players */
+        .music-player-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .music-players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .music-player-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-left: 8px solid var(--primary-pink);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 550px;
+        }
+
+        .music-player-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .music-player-title {
+            color: var(--dark-pink);
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .spotify-player {
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            min-height: 400px;
+        }
+
+        .spotify-player:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .music-description {
+            color: #666;
+            font-size: 1em;
+            margin-top: 20px;
+            line-height: 1.6;
+            padding: 15px;
+            background: rgba(237, 161, 173, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        /* Experience Page */
+        .experience-box {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: 40px;
+            animation: fadeInUp 1.2s ease-in-out;
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .experience-box h3 {
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .experience-box ul {
+            line-height: 1.8;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .experience-box li {
+            margin-bottom: 8px;
+        }
+
+        .skills-box {
+            background-color: var(--light-pink);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 40px;
+            animation: fadeInUp 1.5s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .skills-box h3 {
+            color: var(--dark-pink);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .skills-box ul {
+            line-height: 1.8;
+            list-style-type: "✨ ";
+            padding-left: 20px;
+        }
+
+        .photo-box {
+            margin-top: 40px;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .photo-box img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+            border: 3px solid var(--primary-pink);
+        }
+
+        .photo-box img:hover {
+            transform: scale(1.05);
+        }
+
+        .reflection {
+            margin-top: 40px;
+            font-style: italic;
+            color: var(--dark-pink);
+            background-color: var(--light-pink);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            animation: fadeInUp 2s ease-in-out;
+            font-size: 1.1em;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Contact Page */
+        .contact-info {
+            margin-top: 40px;
+            animation: fadeInUp 1.5s ease-in-out;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--primary-pink);
+        }
+
+        .contact-info h3 {
+            color: var(--dark-pink);
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .contact-info p {
+            line-height: 1.8;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: rgba(237, 161, 173, 0.1);
+            border-radius: 8px;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 15px;
+            color: var(--dark-pink);
+            font-size: 2em;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+            background: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: #fff;
+            background: var(--dark-pink);
+        }
+
+        .contact-form {
+            background-color: var(--light-pink);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            animation: fadeInUp 2s ease-in-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .contact-form h3 {
+            color: var(--dark-pink);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.4em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-pink);
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 10px;
+            border: 2px solid var(--primary-pink);
+            font-family: "Poppins", sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--dark-pink);
+            box-shadow: 0 0 0 3px rgba(214, 51, 132, 0.1);
+        }
+
+        .contact-form button {
+            background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+            display: block;
+            margin: 20px auto 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--primary-pink), var(--secondary-pink));
+            color: white;
+            padding: 25px;
+            margin-top: 60px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(-1deg); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(2deg); }
+        }
+
+        /* Animation Classes */
+        .p1 { transform: rotate(-5deg); }
+        .p2 { transform: rotate(3deg); }
+        .p3 { transform: rotate(-2deg); }
+        .p4 { transform: rotate(4deg); }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 12px 18px rgba(0,0,0,0.2);
+        }
+
+        .float-1 { animation: float1 6s ease-in-out infinite; }
+        .float-2 { animation: float2 7s ease-in-out infinite 1s; }
+        .float-3 { animation: float3 5s ease-in-out infinite 0.5s; }
+
+        .floating-box:nth-child(odd) { animation: float 6s ease-in-out infinite; }
+        .floating-box:nth-child(even) { animation: float 7s ease-in-out infinite 1s; }
+
+        .music-player-container:nth-child(1) { animation: float 6s ease-in-out infinite; }
+        .music-player-container:nth-child(2) { animation: float 7s ease-in-out infinite 1s; }
+        .music-player-container:nth-child(3) { animation: float 6.5s ease-in-out infinite 0.5s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 5px;
+                font-size: 0.9em;
+            }
+            
+            header h1 {
+                font-size: 2.2em;
+            }
+            
+            .floating-boxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-images {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .polaroid-grid {
+                gap: 15px;
+            }
+            
+            .polaroid {
+                width: 200px;
+            }
+
+            .music-players-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .music-player-container {
+                margin: 0 10px;
+                padding: 25px;
+                min-height: 500px;
+            }
+
+            .spotify-player {
+                width: 100%;
+                height: 400px;
+                min-height: 400px;
+            }
+
+            .music-player-title {
+                font-size: 1.4em;
+            }
+
+            table {
+                width: 95%;
+            }
+
+            section {
+                padding: 20px 15px;
+            }
+            
+            .social-icons a {
+                margin: 0 10px;
+                font-size: 1.8em;
+                padding: 12px;
+            }
+
+            .photo-box img {
+                width: 95%;
+            }
+
+            /* Responsive untuk home page */
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-player-container {
+                min-height: 450px;
+                padding: 20px;
+            }
+            
+            .spotify-player {
+                height: 350px;
+                min-height: 350px;
+            }
+            
+            .music-players-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 20px 10px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .music-players-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .music-player-container {
+                min-height: 580px;
+            }
+            
+            .spotify-player {
+                min-height: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1><i id="header-title">The Learning Lane Of AIN</i></h1>
+        <p id="header-subtitle">Learning, Growing And Creating My Own Path</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-link" data-page="home"><i class="fas fa-home"></i> Home</a>
+        <a href="#" class="nav-link" data-page="about"><i class="fas fa-user"></i> Myself</a>
+        <a href="#" class="nav-link" data-page="education"><i class="fas fa-graduation-cap"></i> Education</a>
+        <a href="#" class="nav-link" data-page="hobbies"><i class="fas fa-heart"></i> Hobbies</a>
+        <a href="#" class="nav-link" data-page="experience"><i class="fas fa-briefcase"></i> Experience</a>
+        <a href="#" class="nav-link" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section>
+            <div class="profile-section">
+                <!-- Gambar di sebelah kiri untuk home page -->
+                <img src="C:\Users\ASUS\Desktop\images\pic5.jpg" 
+                     alt="Ain Hasanah" class="profile-photo">
+                
+                <div class="quick-info">
+                    <h3>About Me</h3>
+                    <p><strong>Name:</strong> Nurul Ain Hasanah Binti Azhar</p>
+                    <p><strong>From:</strong> Yan, Kedah</p>
+                    <p><strong>Education:</strong> Diploma in Information Management, UiTM</p>
+                    <p><strong>Passion:</strong> Reading, Learning, and Creating</p>
+                </div>
+            </div>
+
+            <h2>Welcome!</h2>
+            
+            <p>Hi, Assalamualaikum! I'm Ain, a student at Universiti Teknologi MARA (UiTM) pursuing a Diploma in Information Management. This website represents my journey as a student, showcasing my projects, reflections, and achievements along the way.</p>
+
+            <p class="highlight">"Change is the end result of all true learning."&#9748;</p>
+        </section>
+    </div>
+
+    <!-- About Me Page -->
+    <div id="about" class="page">
+        <div class="container">
+            <!-- Gambar dalam bentuk bulat untuk halaman About Me -->
+            <div class="about-photo">
+                <img src="C:\Users\ASUS\Desktop\images\picture1.jpg" 
+                     alt="Nurul Ain Hasanah Photo">
+            </div>
+
+            <div class="quote">
+                <i>"The expert in anything was once a beginner"</i>
+            </div>
+
+            <div class="floating-boxes">
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 class="box-title">Personal Details</h3>
+                    <div class="box-content">
+                        <p><strong>Full Name:</strong> Nurul Ain Hasanah Binti Azhar</p>
+                        <p><strong>From:</strong> Yan, Kedah</p>
+                        <p><strong>Birthday:</strong> 21th February</p>
+                        <p><strong>Age:</strong> 20 Years Old</p>
+                    </div>
+                </div>
+
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="box-title">Education</h3>
+                    <div class="box-content">
+                        <p><strong>Current:</strong> Diploma in Information Management</p>
+                        <p><strong>Institution:</strong> Universiti Teknologi MARA (UiTM)</p>
+                        <p><strong>Branch:</strong> Kedah</p>
+                        <p><strong>Year:</strong> Last Semester</p>
+                    </div>
+                </div>
+
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="box-title">Hobbies & Interests</h3>
+                    <div class="box-content">
+                        <p><strong>Reading:</strong> Fiction, Self-help, Horror</p>
+                        <p><strong>Creative Writing:</strong> Short stories </p>
+                        <p><strong>Photography:</strong> Nature and videography</p>
+                        <p><strong>Learning:</strong> Always exploring new topics that feels interesting to me</p>
+                    </div>
+                </div>
+
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="box-title">Practical Experience</h3>
+                    <div class="box-content">
+                        <p><strong>Library Assistant:</strong> Pejabat Tanah Dan Daerah Yan (2025)</p>
+                        <p><strong>Position:</strong> Clerk</p>
+                        <p><strong>Experience:</strong> Open Outside Booth in Guar</p>
+                        <p><strong>Duration of internship:</strong> 8 weeks</p>
+                    </div>
+                </div>
+
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="box-title">Skills</h3>
+                    <div class="box-content">
+                        <p><strong>Technical:</strong>Microsoft Office, Cataloging</p>
+                        <p><strong>Soft Skills:</strong> Communication, Problem-solving, Teamwork</p>
+                        <p><strong>Languages:</strong> Malay, English</p>
+                        <p><strong>Research:</strong> Information retrieval and analysis</p>
+                    </div>
+                </div>
+
+                <div class="floating-box">
+                    <div class="box-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3 class="box-title">My Passion</h3>
+                    <div class="box-content">
+                        <p>Reading is my favorite activity, and I am always excited to discover new books. Reading is more than a hobby for me, it's a way to feed my curiosity and imagination.</p>
+                        <p>I believe that every book has something to teach us, and I enjoy sharing my reading experiences with others through book reviews and discussions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Images Section -->
+            <div class="floating-images-section">
+                <h2 class="section-title">My Journey in Pictures</h2>
+                <div class="floating-images">
+                    <div class="floating-img-container">
+                        <img src="C:\Users\ASUS\Desktop\images\pic3.jpg" 
+                             alt="Study Time" class="floating-img float-1">
+                        <div class="img-caption">Birthday Celebration</div>
+                    </div>
+                    <div class="floating-img-container">
+                        <img src="C:\Users\ASUS\Desktop\images\pic2.jpg" 
+                             alt="Campus Life" class="floating-img float-2">
+                        <div class="img-caption">Internship</div>
+                    </div>
+                    <div class="floating-img-container">
+                        <img src="C:\Users\ASUS\Desktop\images\pic4.jpg" 
+                             alt="Reading Books" class="floating-img float-3">
+                        <div class="img-caption">Archive Visit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Page -->
+    <div id="education" class="page">
+        <section>
+            <h2>Educational Background</h2>
+            <p class="highlight">Here's a glimpse into my academic milestones and learning experiences 📚</p>
+
+            <!-- 🎓 Timeline Section -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>Primary School</h3>
+                    <p><strong>Sekolah Kebangsaan Yan Kechil </strong> (2012 – 2017)</p>
+                    <p>Completed UPSR with excellent results and active participation in co-curricular activities.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Secondary School</h3>
+                    <p><strong>Sekolah Menengah Islam Darul Izzah</strong> (2018 – 2022)</p>
+                    <p>Achieved SPM qualification and futhering studies in Diploma.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <h3>Tertiary Education</h3>
+                    <p><strong>Universiti Teknologi MARA (UiTM), Branch Kedah</strong> (2023 – Present)</p>
+                    <p>Pursuing a Diploma in Information Management. Actively involved in academic projects and digital archiving coursework.</p>
+                </div>
+            </div>
+
+            
+            <h2>Academic Achievements</h2>
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Institution</th>
+                    <th>Achievement</th>
+                </tr>
+                <tr>
+                    <td>2023</td>
+                    <td>Universiti Teknoligi MARA Kedah</td>
+                    <td>CGPA:3.28 (Semester 1)</td>
+                </tr>
+                <tr>
+                    <td>2022</td>
+                    <td>Sekolah Menengah Islam Darul Izzah</td>
+                    <td>Top 3 Best Result SPM</td>
+                </tr>
+                <tr>
+                    <td>2020 - 2021</td>
+                    <td>Sekolah Menengah Islam Darul Izzah</td>
+                    <td>Top 3 Academic Excellence Award</td>
+                </tr>
+            </table>
+        </section>
+    </div>
+
+    <!-- Hobbies Page -->
+    <div id="hobbies" class="page">
+        <section>
+            <div class="intro">
+                <p>In my free time, I enjoy activities that help me relax, grow, and express myself creatively.</p>
+            </div>
+
+            <!-- POLAROID GALLERY -->
+            <div class="polaroid-grid">
+
+                <div class="polaroid p1">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4" alt="Listening to Music">
+                    <h3>🎧 Listening to Music</h3>
+                    <p>I love relaxing with soft pop and lo-fi music.</p>
+                </div>
+
+                <div class="polaroid p2">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="Reading">
+                    <h3>📚 Reading</h3>
+                    <p>Books inspire me and let me explore new ideas.</p>
+                </div>
+
+                <div class="polaroid p3">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Photography">
+                    <h3>📸 Photography</h3>
+                    <p>Capturing memories through photos is my favourite thing.</p>
+                </div>
+
+                <div class="polaroid p4">
+                    <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0" alt="Baking">
+                    <h3>🍰 Baking</h3>
+                    <p>I enjoy baking desserts for family and friends.</p>
+                </div>
+
+            </div>
+
+            <!-- Spotify Music Player Section -->
+            <div class="music-player-section">
+                <h2 style="color: var(--dark-pink); margin-bottom: 40px; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">🎵 My Music Collection</h2>
+                <div class="music-players-grid">
+                    
+                    <!-- Favorite Artist -->
+                    <div class="music-player-container">
+                        <h3 class="music-player-title">🎤 Favorite Artist</h3>
+                        <iframe 
+                            id="spotifyArtist"
+                            src="https://open.spotify.com/embed/artist/5pnSNZZRyYViu2n58Zlw1J?utm_source=generator&theme=0" 
+                            width="100%" 
+                            height="450" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media"
+                            class="spotify-player">
+                        </iframe>
+                        <p class="music-description">
+                            This is one of my favorite artists whose music I often listen to while studying and relaxing. Their melodies create the perfect atmosphere for focus and peace.
+                        </p>
+                    </div>
+
+                    <!-- Favorite Playlist 1 -->
+                    <div class="music-player-container">
+                        <h3 class="music-player-title">🎶 Chill Vibes</h3>
+                        <iframe 
+                            id="spotifyPlaylist1"
+                            src="https://open.spotify.com/embed/playlist/37i9dQZF1E4uiamMtux6mN?utm_source=generator&theme=0" 
+                            width="100%" 
+                            height="450" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media"
+                            class="spotify-player">
+                        </iframe>
+                        <p class="music-description">
+                            Perfect playlist for relaxing moments and calm evenings. A beautiful mix of soothing melodies that help me unwind after a long day.
+                        </p>
+                    </div>
+
+                    <!-- Favorite Playlist 2 -->
+                    <div class="music-player-container">
+                        <h3 class="music-player-title">💫 Study Focus</h3>
+                        <iframe 
+                            id="spotifyPlaylist2"
+                            src="https://open.spotify.com/embed/playlist/2d2JhpLnDVJ9YFdSYR8ClV?utm_source=generator&theme=0" 
+                            width="100%" 
+                            height="450" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media"
+                            class="spotify-player">
+                        </iframe>
+                        <p class="music-description">
+                            My go-to playlist for studying and focusing. The carefully curated tracks help me concentrate and be productive during study sessions.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Experience Page -->
+    <div id="experience" class="page">
+        <section>
+            <div class="intro">
+                <p>My practical training was an exciting opportunity to apply what I've learned at UiTM into a real working environment. It gave me the confidence, experience, and understanding of how records are managed in actual organizations.</p>
+            </div>
+
+            <div class="experience-box">
+                <h3>📍 Pejabat Tanah Dan Daerah Yan</h3>
+                <p><strong>Duration:</strong> 27 July – 18 September 2025</p>
+                <p><strong>Position:</strong> Clerk</p>
+                <p><strong>Responsibilities :</strong></p>
+                <ul>
+                    <li>Assisted in using the i-Hasil system to check land tax and enter data into Microsoft Excel.</li>
+                    <li>Performed verification, recording, and updating of land title numbers using the SPTB Web system.</li>
+                    <li>Maintained and organized metadata in digital record systems.</li>
+                    <li>Supported daily administrative and clerical duties within the records department.</li>
+                </ul>
+            </div>
+
+            <div class="skills-box">
+                <h3>💡 Skills Gained</h3>
+                <ul>
+                    <li>Records and Information Management</li>
+                    <li>Microsoft Office and Digital Filing</li>
+                    <li>Communication and Teamwork</li>
+                    <li>Time Management and Problem-Solving</li>
+                </ul>
+            </div>
+
+            <div class="photo-box">
+                <img src="C:\Users\ASUS\Desktop\images\pic7.jpeg">	
+                <p><i>Pejabat Tanah dan Daerah Yan.</i></p>
+                <p>the place where I completed my internship</p>
+            </div>
+
+            <div class="reflection">
+                "This experience taught me to be disciplined, organized, and adaptable. I realized that managing records is not only about keeping data safe, it's about preserving knowledge for the future."
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section>
+            <div class="intro">
+                <p>Thank you for visiting my website! Feel free to reach out for collaboration, questions, or just to say hello.</p>
+            </div>
+
+            <div class="contact-info">
+                <h3>📧 Contact Information</h3>
+                <p><strong>Email:</strong> ainhasanah212@gmail.com</p>
+                <p><strong>Phone:</strong> +60 19-9144 382</p>
+                <p><strong>Current Location:</strong> Kolej Murni 2 , Universiti Teknologi MARA</p>
+                <p><strong>Home Location:</strong>Lot 13, Belakang Sekolah Menegah Agama Fauzi, 06900 Yan, Kedah.</p>
+
+                <div class="social-icons">
+                    <a href="mailto:ainhasanah212@gmail.com" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/60199144382" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ainazhar.r?igsh=cGZoaXU1MHlwcWV1" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ain-azhar-8377aa363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>📝 Send Me a Message</h3>
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">
+                        <span id="btnText">Send Message <i class="fas fa-paper-plane"></i></span>
+                        <span id="btnLoading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Sending...
+                        </span>
+                    </button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. I'll get back to you soon!
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    <i class="fas fa-exclamation-circle"></i> Sorry, there was an error sending your message. Please try again or contact me directly via email.
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 Ain | UiTM Student Project | Made with <i class="fas fa-heart" style="color: #fff;"></i>
+    </footer>
+
+    <script>
+        // Page Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = this.getAttribute('data-page');
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show target page
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Update header based on page
+                updateHeader(targetPage);
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Update header content based on page
+        function updateHeader(page) {
+            const headerTitle = document.getElementById('header-title');
+            const headerSubtitle = document.getElementById('header-subtitle');
+            
+            switch(page) {
+                case 'home':
+                    headerTitle.innerHTML = '<i>The Learning Lane Of AIN</i>';
+                    headerSubtitle.textContent = 'Learning, Growing And Creating My Own Path';
+                    break;
+                case 'about':
+                    headerTitle.innerHTML = '<i>Ain\'s Story</i>';
+                    headerSubtitle.textContent = 'A Journey Beyond Books';
+                    break;
+                case 'education':
+                    headerTitle.innerHTML = '<i>My Education Journey</i>';
+                    headerSubtitle.innerHTML = '<i>Learning never exhausts the mind. - Leonardo da Vinci</i>';
+                    break;
+                case 'hobbies':
+                    headerTitle.innerHTML = '<i>My Hobbies</i>';
+                    headerSubtitle.textContent = 'Little things that bring big happiness.';
+                    break;
+                case 'experience':
+                    headerTitle.innerHTML = '<i>My Practical Experience</i>';
+                    headerSubtitle.textContent = 'Learning Beyond the Classroom';
+                    break;
+                case 'contact':
+                    headerTitle.innerHTML = '<i>Contact Me</i>';
+                    headerSubtitle.textContent = 'Let\'s Connect and Create Together 🌸';
+                    break;
+            }
+        }
+
+        // Interactive effects for floating boxes
+        document.querySelectorAll('.floating-box').forEach(box => {
+            box.addEventListener('mouseenter', function() {
+                this.style.zIndex = '10';
+            });
+            
+            box.addEventListener('mouseleave', function() {
+                this.style.zIndex = '1';
+            });
+        });
+
+        // Click effects for polaroid images
+        document.querySelectorAll('.polaroid').forEach(polaroid => {
+            polaroid.addEventListener('click', function() {
+                this.style.transform = 'rotate(0deg) scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+
+        // Click effects for floating images
+        document.querySelectorAll('.floating-img').forEach(img => {
+            img.addEventListener('click', function() {
+                this.style.transform = 'scale(1.1) rotate(5deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 500);
+            });
+        });
+
+        // Hover effects for Spotify players
+        const musicPlayers = [
+            document.getElementById('spotifyArtist'),
+            document.getElementById('spotifyPlaylist1'),
+            document.getElementById('spotifyPlaylist2')
+        ];
+        
+        musicPlayers.forEach(player => {
+            if (player) {
+                player.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 20px 50px rgba(0,0,0,0.3)';
+                });
+                
+                player.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 12px 30px rgba(0,0,0,0.2)';
+                });
+            }
+        });
+
+        // Contact form functionality
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoading = document.getElementById('btnLoading');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Simulate sending message
+            setTimeout(() => {
+                const isSuccess = Math.random() > 0.3;
+                
+                if (isSuccess) {
+                    successMessage.style.display = 'block';
+                    document.getElementById('messageForm').reset();
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+                
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }, 2000);
+        });
+
+        // Social media link tracking
+        document.querySelector('a[href="mailto:ainhasanah212@gmail.com"]').addEventListener('click', function(e) {
+            console.log('Email link clicked');
+        });
+        
+        document.querySelector('a[href="https://wa.me/60199144382"]').addEventListener('click', function(e) {
+            console.log('WhatsApp link clicked');
+        });
+    </script>
+</body>
+</html>
