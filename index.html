@@ -329,6 +329,55 @@
             bottom: -35px;
         }
 
+        /* Additional Gallery Section */
+        .additional-gallery-section {
+            margin: 80px 0 40px 0;
+            text-align: center;
+        }
+
+        .additional-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .additional-gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+            background: white;
+        }
+
+        .additional-gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        }
+
+        .additional-gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .additional-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .additional-gallery-caption {
+            padding: 15px;
+            background: white;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.4;
+            text-align: center;
+            border-top: 1px solid rgba(237, 161, 173, 0.3);
+        }
+
         /* Education Page */
         .timeline {
             position: relative;
@@ -927,6 +976,16 @@
                 height: 180px;
             }
             
+            /* Additional Gallery */
+            .additional-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .additional-gallery-item img {
+                height: 220px;
+            }
+            
             /* Education Page */
             .timeline {
                 padding-left: 20px;
@@ -1040,6 +1099,15 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            .additional-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .additional-gallery-item img {
+                height: 200px;
+            }
+            
             .music-players-grid {
                 grid-template-columns: 1fr;
             }
@@ -1074,6 +1142,7 @@
             .profile-photo:hover,
             .gallery-item:hover,
             .floating-img:hover,
+            .additional-gallery-item:hover,
             .social-icons a:hover,
             .contact-form button:hover {
                 transform: none;
@@ -1091,7 +1160,8 @@
             .about-photo img,
             .floating-img,
             .polaroid img,
-            .gallery-item img {
+            .gallery-item img,
+            .additional-gallery-item img {
                 image-rendering: -webkit-optimize-contrast;
                 image-rendering: crisp-edges;
             }
@@ -1231,7 +1301,7 @@
                 </div>
             </div>
 
-            <!-- Floating Images Section - Updated with 6 images -->
+            <!-- Floating Images Section - Kekalkan yang sedia ada -->
             <div class="floating-images-section">
                 <h2 class="section-title">My Journey in Pictures</h2>
                 <div class="floating-images">
@@ -1268,9 +1338,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
+           
     <!-- Education Page -->
     <div id="education" class="page">
         <section>
@@ -1734,4 +1803,3 @@
     </script>
 </body>
 </html>
-
